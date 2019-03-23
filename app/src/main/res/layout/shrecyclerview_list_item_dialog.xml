@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/appointmentStatusHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/highlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:background="@android:color/darker_gray"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:padding="1dp"
+            android:singleLine="true"
+            android:text="HIGHLIGHT"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <com.heallifydoctor.util.HeallifyCircleImageView
+            android:id="@+id/imageview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:visibility="gone"
+            android:padding="2dp" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/shrecycleTitleStyle"
+                android:text="Title" />
+
+            <TextView
+                android:id="@+id/linearlayoutsubtitles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/shrecycleSubtitleItemStyle"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/optionsview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/rootViewStandardPadding"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/ellipsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:text="•••"
+                android:textColor="@android:color/darker_gray" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

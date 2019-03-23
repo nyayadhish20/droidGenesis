@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="title_text_size_home">40sp</dimen>
+    <dimen name="title_text_size">23sp</dimen>
+    <dimen name="litle_title_text_size">20sp</dimen>
+    <dimen name="subtitle_textsize">17sp</dimen>
+    <dimen name="content_text_size">15sp</dimen>
+    <dimen name="mini_textview_size">12sp</dimen>
+
+    <dimen name="paddingViewDefault">5dp</dimen>
+    <dimen name="marginrootviewDefault">5dp</dimen>
+    <dimen name="healthlogItemsMargin">2dp</dimen>
+    <dimen name="standardviewmargin">16dp</dimen>
+    <dimen name="standardcardcornerradius">2dp</dimen>
+    <dimen name="rootViewStandardPadding">16dp</dimen>
+    <dimen name="elevationToolbar">10dp</dimen>
+    <dimen name="shrecycler_grid_item_wh">200dp</dimen>
+
+</resources>

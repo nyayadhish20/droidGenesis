@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+    </style>
+
+    <style name="popupMenu" parent="@style/Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:actionMenuTextColor">@android:color/darker_gray</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+    <style name="shrecycleTitleStyle">
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/app_darker_grey</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="shrecyclerTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="shrecycleSubtitleItemStyle">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">@dimen/content_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="shrecycleOptionItemStyle">
+        <item name="android:textSize">13dp</item>
+        <item name="android:alpha">0.7</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">bottom|center</item>
+        <item name="android:drawableTint">@android:color/white</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:text">Option</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+</resources>

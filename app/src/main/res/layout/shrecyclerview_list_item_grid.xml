@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/shrecycler_grid_item_wh"
+    android:layout_height="@dimen/shrecycler_grid_item_wh"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/rootViewStandardPadding"
+    app:cardCornerRadius="2dp"
+    android:layout_gravity="center"
+    android:animateLayoutChanges="true">
+
+    <ImageView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rootview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:animateLayoutChanges="true"
+        android:background="?android:attr/selectableItemBackground">
+        <TextView
+            android:id="@+id/title"
+            style="@style/shrecyclerTitleStyle"
+            android:paddingRight="@dimen/rootViewStandardPadding"
+            android:text="Title"
+            android:layout_marginTop="@dimen/rootViewStandardPadding"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:background="@color/app_darker_grey"
+            android:textColor="@android:color/white"
+            android:textStyle="normal"
+            android:alpha="0.5"
+            android:elevation="5dp"
+            android:maxLines="1"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:animateLayoutChanges="true"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/highlight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:background="@color/app_darker_grey"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:padding="1dp"
+                android:maxLines="1"
+                android:text="HIGHLIGHT"
+                style="?android:textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+
+
+
+            <TextView
+                android:id="@+id/linearlayoutsubtitles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/shrecycleSubtitleItemStyle"
+                android:paddingLeft="@dimen/rootViewStandardPadding"/>
+
+            <TextView
+                android:id="@+id/ellipsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="right"
+                android:paddingBottom="0dp"
+                android:paddingRight="10dp"
+                android:paddingTop="0dp"
+                android:text="•••"
+                android:textColor="@color/app_darker_grey" />
+
+
+            <LinearLayout
+                android:id="@+id/optionsview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/rootViewStandardPadding"
+                android:paddingRight="@dimen/rootViewStandardPadding"
+                android:visibility="gone">
+                <!--
+                                <TextView
+                                    style="@style/shrecycleOptionItemStyle"/>
+                -->
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
