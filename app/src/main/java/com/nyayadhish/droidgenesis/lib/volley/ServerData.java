@@ -27,7 +27,7 @@ public class ServerData {
     }
 
     public <T> void addToRequestQueue(Request<T> req, BasePresenter basePresenter) {
-        mAppData.addDebugPDFInfo(req.getUrl());
+
         mLastRequest = req;
         req.setTag(basePresenter.getClass().hashCode() + "");
         /*req.setRetryPolicy(new DefaultRetryPolicy(10000,
@@ -38,7 +38,7 @@ public class ServerData {
     }
 
     public <T> void addToRequestQueueNonCancellable(Request<T> req, BasePresenter basePresenter) {
-        mAppData.addDebugPDFInfo(req.getUrl());
+
         mLastRequest = req;
         req.setTag(basePresenter.getClass().hashCode() + " non cancellable presenter call");
         requestQueue.add(req);

@@ -64,14 +64,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     private BottomSheetBehavior mBottomSheetBehaviour;
     private Snackbar mSnackbar;
     private MaterialDialog materialProgressBar;
-    //private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
     public void onUnauthoriseAccess() {
-     /*   Intent i = new Intent(this, ActivityLogin.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);*/
+
     }
 
     @Override
@@ -162,14 +159,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         showNoPermissionsUi("");
     }
 
-    /*@Override
-    public void onUnauthoriseAccess() {
-        showToast("Something went wrong,\n Please login to continue");
-        Intent i = new Intent(this, LoginActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-        finish();
-    }*/
     public void showSoftKeyBoard(View view){
         if(view.requestFocus()){
             InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -303,12 +292,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
             shareDebugSocial(textToShare);
         }
     }
-/*
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-
-    }*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -373,20 +356,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     }
 
-    /*public void logEvent(String eventName) {
-        if (!BuildConfig.DEBUG) {
-            Bundle bundle = new Bundle();
-            bundle.putString(FirebaseAnalytics.Param.CREATIVE_NAME, eventName);
-            mFirebaseAnalytics.logEvent(eventName, bundle);
-        }
-    }*/
 
     @Override
     protected void onDestroy() {
 
-        /*if (getListAdapter() != null)
-            getListAdapter().onDestroy();
-*/
         hideMaterialProgress();
 
         if (getPresenter() != null)
@@ -478,25 +451,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onResume() {
         super.onResume();
-
-        //((AppTahsil) getApplication()).setCurrentActivity(this);
-
-        /* if (this instanceof VideoAppointment)
-            return;
-*/
-        /*if (User.getInstance() == null && !(this instanceof PreLoginActivity)
-                ) {
-            User post = getAPIComponent().getRealmHelper().getRealmInstance().where(User.class).findFirst();
-            if (post != null) {
-                User.setInstance(post);
-                showDebugToast("Restored User Instance From Realm");
-            } else {
-                Intent splashIntent = new Intent(this, LoginActivity.class);
-                splashIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(splashIntent);
-                finish();
-            }
-        }*/
 
     }
 
@@ -674,23 +628,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         mFileDownloadProgressBar.setProgress(0);
     }
 
-/*
-//todo DOwnload Bar
-    protected void updateDownloadProgressBar(int progress, double sizeOfFileinBytes, String title, String message) {
-
-        if (mFileDownloadProgressBar == null
-                || !mFileDownloadProgressBar.isShowing())
-            showDownloadProgressBar(title, message);
-
-        if (progress < 0) {
-            mFileDownloadProgressBar.setProgress((int) (NumberManager.round(progress * -1, 2) / sizeOfFileinBytes));
-            mFileDownloadProgressBar.setContent((SizeConvert.KiloByteToMB(-progress) + "/" + SizeConvert.ByteToMB(sizeOfFileinBytes)));
-        } else {
-            mFileDownloadProgressBar.setProgress(progress);
-        }
-
-    }
-*/
 
     public void setStatusBarColor(int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
