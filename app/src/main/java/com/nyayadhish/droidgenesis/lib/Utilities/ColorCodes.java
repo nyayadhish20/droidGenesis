@@ -42,7 +42,7 @@ public interface ColorCodes {
     int OLIVE_GREEN = Color.rgb(85, 107, 47);
     int BLUE = Color.rgb(38, 146, 233);
     int DRAWER_SELECTION = Color.rgb(32, 144, 154);
-    int PRIMARYlIGHT = Color.rgb(228,97,172);
+    int PRIMARYlIGHT = Color.rgb(228, 97, 172);
 
     int WHITE = Color.WHITE;
 }
