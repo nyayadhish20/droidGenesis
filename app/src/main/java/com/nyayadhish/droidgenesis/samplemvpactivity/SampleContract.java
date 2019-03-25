@@ -15,6 +15,8 @@ public interface SampleContract {
 
     interface View extends BaseView{
         void callingViewFromPresenter();
+
+        void faliure();
     }
 
 }

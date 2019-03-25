@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import com.nyayadhish.droidgenesis.lib.AppData;
 import com.nyayadhish.droidgenesis.lib.AppDroidGenesis;
+import com.nyayadhish.droidgenesis.lib.retrofit.CustomRetroRequest;
 import com.nyayadhish.droidgenesis.lib.volley.ServerData;
 
 import javax.inject.Singleton;
@@ -26,6 +27,13 @@ public class APIModule {
     ServerData providesServerData(){
         return new ServerData(context, getAppData());
     }
+
+    @Provides
+    @Singleton
+    CustomRetroRequest getAPIServices(){
+        return CustomRetroRequest.getInstance();
+    }
+
 
     @Provides
     @Singleton

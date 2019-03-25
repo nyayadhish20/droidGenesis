@@ -3,6 +3,9 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.nyayadhish.droidgenesis">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:name=".lib.AppDroidGenesis"
         android:allowBackup="true"
@@ -20,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".anothersample.ActivityAnotherSample" />
     </application>
 
 </manifest>

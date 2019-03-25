@@ -1,9 +1,12 @@
 package com.nyayadhish.droidgenesis.samplemvpactivity;
 
+import android.widget.Button;
+
 import com.nyayadhish.droidgenesis.R;
 import com.nyayadhish.droidgenesis.lib.BaseActivityWithToolbar;
 import com.nyayadhish.droidgenesis.lib.BasePresenter;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -13,10 +16,20 @@ public class ActivitySample extends BaseActivityWithToolbar implements SampleCon
 
     private SamplePresenter mPresenter;
 
+
+
+    @BindView(R.id.presenter)
+    Button button;
+
+
     @OnClick(R.id.presenter)
     void callToPresenter(){
         mPresenter.callingPresenterFromView();
+
+
     }
+
+
 
     @Override
     protected String getToolbarTitle() {
@@ -51,5 +64,10 @@ public class ActivitySample extends BaseActivityWithToolbar implements SampleCon
     @Override
     public void callingViewFromPresenter() {
         showToast("This is calling view from Presenter");
+    }
+
+    @Override
+    public void faliure() {
+        showToast("Failed");
     }
 }

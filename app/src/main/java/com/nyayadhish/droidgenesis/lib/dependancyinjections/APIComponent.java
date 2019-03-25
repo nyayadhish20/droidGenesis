@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.nyayadhish.droidgenesis.lib.AppData;
 import com.nyayadhish.droidgenesis.lib.AppDroidGenesis;
+import com.nyayadhish.droidgenesis.lib.retrofit.CustomRetroRequest;
 import com.nyayadhish.droidgenesis.lib.volley.ServerData;
 
 import javax.inject.Singleton;
@@ -19,6 +20,7 @@ public interface APIComponent {
     Gson getGson();
     AppData getAppData();
     //RealmHelper getRealmHelper();
+    CustomRetroRequest getRetroService();
 
     AppDroidGenesis getApp();
 /*
