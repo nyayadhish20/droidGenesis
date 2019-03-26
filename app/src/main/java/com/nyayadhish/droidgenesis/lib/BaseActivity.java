@@ -313,23 +313,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         if (recyclerView != null)
             setupRecyclerView(recyclerView);
 
-        //mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+
         if (mSwipeRefreshLayout != null)
             prepareSwipeRefreshLayout(mSwipeRefreshLayout);
 
-        /*bottomSheetView = findViewById(R.id.bottom_sheet);
-        if (bottomSheetView != null)
-            prepareBottomSheet(bottomSheetView);
-*/
         apiComponent = ((AppDroidGenesis) getApplication()).getAPIComponent();
 
         setPresenter();
 
         checkForIncomingSnacks();
-
-        //messageTextView = (TextView) findViewById(R.id.message);
-
-        //mFloatingActionButton = (FloatingActionButton) findViewById(R.id.floatingactionbutton);
 
         if (mFloatingActionButton != null) {
             mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -345,7 +337,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
 
         loadPage();
-        //mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
     }
 
     @Override
@@ -587,10 +579,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     protected abstract BasePresenter getPresenter();
- /*   @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }*/
 
     public abstract @LayoutRes
     int getLayout();
@@ -734,52 +722,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         return mSpinnerSetName;
     }
 
-    /* public void loadAutocompletesInSpinner(@NonNull final Spinner spinner, @NonNull final List<? extends AutoCompleteSearchContract.Autocomplete> spinnerAutocompletes) {
-        List<String> spinnerItem = new ArrayList<>();
-        for (AutoCompleteSearchContract.Autocomplete pf :
-                spinnerAutocompletes) {
-            spinnerItem.add(pf.getName());
-        }
-        spinner.setAdapter(new ArrayAdapter<>(this, R.layout.prescription_spinner_dropdown_item, spinnerItem));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mSpinnerSetId = spinnerAutocompletes.get(position).getId();
-                mSpinnerSetName = spinnerAutocompletes.get(position).getName();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mSpinnerSetId = null;
-                mSpinnerSetName = null;
-            }
-        });
-    } */
-
-
-
-    /*void showBottomSheet(String[] items) {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        for (String item :
-                items) {
-            TextView text = new TextView(this);
-            text.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            text.setText(item);
-            linearLayout.addView(text);
-            text.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }
-        bottomSheetDialog.addContentView(linearLayout, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        bottomSheetDialog.show();
-    }*/
 
     public RecyclerView getProgramaticalRecyclerView() {
         RecyclerView recyclerView = new RecyclerView(this);
@@ -809,50 +751,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     public void showNoPermissionsUi(String permissionName) {
-        /*showSnackBarWitAction("ACCESS DENIED", "OK", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideSnackBar();
-            }
-        });
-        hideMaterialProgress();
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout.setRefreshing(false);
-        }*/
     }
-
-    /*public void loadListInShrecyclerView(List<? extends ShrecyclerViewModel> list, ShrecylerViewAdapter mAdapter, ShrecycleContract shrecycleContract) {
-        if (mAdapter == null) {
-            //mAdapter = new ShrecylerViewAdapter(BaseActivity.this, shrecycleContract, list, getRecyclerView());
-        } else {
-            mAdapter.updateList(list);
-        }
-    }*/
-
-
-    /*public @Nullable ShrecylerViewAdapter getListAdapter(){
-        return null;
-    }*/
-
-    /*protected boolean startHomeActivityIfCurrentActivityIsTheOnlyActivityInActivityStack(boolean finishHomeActivityAfterLaunch) {
-        ActivityManager mngr = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-
-        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
-
-        if (taskList.get(0).numActivities == 1 &&
-                taskList.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
-
-            Intent i = new Intent(this, FragmentHome.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.putExtra(FragmentHome.KEY_FINISH_AFTER_LAUNCH, finishHomeActivityAfterLaunch);
-            startActivity(i);
-
-            return true;
-        }
-
-        return false;
-    }*/
 
     public void showDebugHelper() {
 

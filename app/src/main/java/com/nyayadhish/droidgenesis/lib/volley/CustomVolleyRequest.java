@@ -15,7 +15,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.JsonArray;
-import com.nyayadhish.droidgenesis.lib.AppDroidGenesis;
 import com.nyayadhish.droidgenesis.lib.Utilities.ErrorCodes;
 
 import org.json.JSONException;
@@ -119,8 +118,6 @@ public class CustomVolleyRequest extends Request<JSONObject> implements Response
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> map = new HashMap<>();
-        map.put("access_token", AppDroidGenesis.getToken());
-        //Log.i(TAG, "getHeaders: access_token = " + User.getInstance().getToken());
         return map;
     }
 
@@ -202,9 +199,9 @@ public class CustomVolleyRequest extends Request<JSONObject> implements Response
             try {
                 if (mVolleyCallBack != null) {
                     /*mVolleyCallBack.onResponseReceived();*/
-                    if (response.getString("success").equals("1")) {
+                    if (response.getString("status").equals("ok")) {
                         mVolleyCallBack.onSuccess(response);
-                    } else if (response.getString("success").equals("0")) {
+                    } else if (response.getString("status").equals("failed")) {
 //                        int errorCode = response.getInt("error");
                         int errorCode = ErrorCodes.getFirstErrorCode(response.getJSONArray("error"));
                         if (errorCode == 0 || errorCode == 4) {

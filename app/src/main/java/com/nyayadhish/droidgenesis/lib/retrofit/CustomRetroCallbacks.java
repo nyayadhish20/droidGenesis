@@ -1,6 +1,8 @@
 package com.nyayadhish.droidgenesis.lib.retrofit;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,6 +15,8 @@ import retrofit2.Response;
  */
 public abstract class CustomRetroCallbacks<T> implements Callback<T> {
 
+    private static final String TAG = CustomRetroCallbacks.class.getSimpleName();
+
     /**
      * @param call     Instance of Call interface.
      * @param response Response of the API to determine if it indicates success.
@@ -21,9 +25,10 @@ public abstract class CustomRetroCallbacks<T> implements Callback<T> {
     public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
 
 
+        Log.i(TAG, "URL : " + call.request().url());
+
 
         if (response.isSuccessful() && response.body() != null) {
-//            Utility.getInstance().showLog("Response: " + new Gson().toJson(response.body()));
             onSuccess(response.body());
         } else
             onFailure(call, new Exception());

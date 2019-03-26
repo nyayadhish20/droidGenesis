@@ -23,8 +23,7 @@ public abstract class BaseActivityWithToolbar extends BaseActivity {
 
         if(toolbar!=null)
             setupToolbar(toolbar);
-        //messageTextView = (TextView)findViewById(R.id.message);
-        //setSupportActionBar(getToolbar());
+
     }
 
     @Override
@@ -39,22 +38,6 @@ public abstract class BaseActivityWithToolbar extends BaseActivity {
 
     protected abstract String getToolbarTitle();
 
-/*
-    private int mOptionsMenuId;
-    public void setOptionsMenu(@MenuRes int menuId){
-        this.mOptionsMenuId = menuId;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if(mOptionsMenuId != 0){
-            getMenuInflater().inflate(mOptionsMenuId, menu);
-            return true;
-        }else{
-            return false;
-        }
-    }
-*/
 
     protected abstract int getToolbarIcon();
     public void setupToolbar(androidx.appcompat.widget.Toolbar toolbar) {
