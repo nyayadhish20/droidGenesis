@@ -64,14 +64,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     private BottomSheetBehavior mBottomSheetBehaviour;
     private Snackbar mSnackbar;
     private MaterialDialog materialProgressBar;
-    //private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
     public void onUnauthoriseAccess() {
-     /*   Intent i = new Intent(this, ActivityLogin.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);*/
+
     }
 
     @Override
@@ -162,14 +159,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         showNoPermissionsUi("");
     }
 
-    /*@Override
-    public void onUnauthoriseAccess() {
-        showToast("Something went wrong,\n Please login to continue");
-        Intent i = new Intent(this, LoginActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-        finish();
-    }*/
     public void showSoftKeyBoard(View view){
         if(view.requestFocus()){
             InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -303,12 +292,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
             shareDebugSocial(textToShare);
         }
     }
-/*
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-
-    }*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -330,23 +313,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         if (recyclerView != null)
             setupRecyclerView(recyclerView);
 
-        //mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+
         if (mSwipeRefreshLayout != null)
             prepareSwipeRefreshLayout(mSwipeRefreshLayout);
 
-        /*bottomSheetView = findViewById(R.id.bottom_sheet);
-        if (bottomSheetView != null)
-            prepareBottomSheet(bottomSheetView);
-*/
         apiComponent = ((AppDroidGenesis) getApplication()).getAPIComponent();
 
         setPresenter();
 
         checkForIncomingSnacks();
-
-        //messageTextView = (TextView) findViewById(R.id.message);
-
-        //mFloatingActionButton = (FloatingActionButton) findViewById(R.id.floatingactionbutton);
 
         if (mFloatingActionButton != null) {
             mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -362,7 +337,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
 
         loadPage();
-        //mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
     }
 
     @Override
@@ -373,20 +348,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     }
 
-    /*public void logEvent(String eventName) {
-        if (!BuildConfig.DEBUG) {
-            Bundle bundle = new Bundle();
-            bundle.putString(FirebaseAnalytics.Param.CREATIVE_NAME, eventName);
-            mFirebaseAnalytics.logEvent(eventName, bundle);
-        }
-    }*/
 
     @Override
     protected void onDestroy() {
 
-        /*if (getListAdapter() != null)
-            getListAdapter().onDestroy();
-*/
         hideMaterialProgress();
 
         if (getPresenter() != null)
@@ -478,25 +443,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onResume() {
         super.onResume();
-
-        //((AppTahsil) getApplication()).setCurrentActivity(this);
-
-        /* if (this instanceof VideoAppointment)
-            return;
-*/
-        /*if (User.getInstance() == null && !(this instanceof PreLoginActivity)
-                ) {
-            User post = getAPIComponent().getRealmHelper().getRealmInstance().where(User.class).findFirst();
-            if (post != null) {
-                User.setInstance(post);
-                showDebugToast("Restored User Instance From Realm");
-            } else {
-                Intent splashIntent = new Intent(this, LoginActivity.class);
-                splashIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(splashIntent);
-                finish();
-            }
-        }*/
 
     }
 
@@ -633,10 +579,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     protected abstract BasePresenter getPresenter();
- /*   @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }*/
 
     public abstract @LayoutRes
     int getLayout();
@@ -674,23 +616,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         mFileDownloadProgressBar.setProgress(0);
     }
 
-/*
-//todo DOwnload Bar
-    protected void updateDownloadProgressBar(int progress, double sizeOfFileinBytes, String title, String message) {
-
-        if (mFileDownloadProgressBar == null
-                || !mFileDownloadProgressBar.isShowing())
-            showDownloadProgressBar(title, message);
-
-        if (progress < 0) {
-            mFileDownloadProgressBar.setProgress((int) (NumberManager.round(progress * -1, 2) / sizeOfFileinBytes));
-            mFileDownloadProgressBar.setContent((SizeConvert.KiloByteToMB(-progress) + "/" + SizeConvert.ByteToMB(sizeOfFileinBytes)));
-        } else {
-            mFileDownloadProgressBar.setProgress(progress);
-        }
-
-    }
-*/
 
     public void setStatusBarColor(int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -797,52 +722,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         return mSpinnerSetName;
     }
 
-    /* public void loadAutocompletesInSpinner(@NonNull final Spinner spinner, @NonNull final List<? extends AutoCompleteSearchContract.Autocomplete> spinnerAutocompletes) {
-        List<String> spinnerItem = new ArrayList<>();
-        for (AutoCompleteSearchContract.Autocomplete pf :
-                spinnerAutocompletes) {
-            spinnerItem.add(pf.getName());
-        }
-        spinner.setAdapter(new ArrayAdapter<>(this, R.layout.prescription_spinner_dropdown_item, spinnerItem));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mSpinnerSetId = spinnerAutocompletes.get(position).getId();
-                mSpinnerSetName = spinnerAutocompletes.get(position).getName();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mSpinnerSetId = null;
-                mSpinnerSetName = null;
-            }
-        });
-    } */
-
-
-
-    /*void showBottomSheet(String[] items) {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        for (String item :
-                items) {
-            TextView text = new TextView(this);
-            text.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            text.setText(item);
-            linearLayout.addView(text);
-            text.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-        }
-        bottomSheetDialog.addContentView(linearLayout, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        bottomSheetDialog.show();
-    }*/
 
     public RecyclerView getProgramaticalRecyclerView() {
         RecyclerView recyclerView = new RecyclerView(this);
@@ -872,50 +751,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     public void showNoPermissionsUi(String permissionName) {
-        /*showSnackBarWitAction("ACCESS DENIED", "OK", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideSnackBar();
-            }
-        });
-        hideMaterialProgress();
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout.setRefreshing(false);
-        }*/
     }
-
-    /*public void loadListInShrecyclerView(List<? extends ShrecyclerViewModel> list, ShrecylerViewAdapter mAdapter, ShrecycleContract shrecycleContract) {
-        if (mAdapter == null) {
-            //mAdapter = new ShrecylerViewAdapter(BaseActivity.this, shrecycleContract, list, getRecyclerView());
-        } else {
-            mAdapter.updateList(list);
-        }
-    }*/
-
-
-    /*public @Nullable ShrecylerViewAdapter getListAdapter(){
-        return null;
-    }*/
-
-    /*protected boolean startHomeActivityIfCurrentActivityIsTheOnlyActivityInActivityStack(boolean finishHomeActivityAfterLaunch) {
-        ActivityManager mngr = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-
-        List<ActivityManager.RunningTaskInfo> taskList = mngr.getRunningTasks(10);
-
-        if (taskList.get(0).numActivities == 1 &&
-                taskList.get(0).topActivity.getClassName().equals(this.getClass().getName())) {
-
-            Intent i = new Intent(this, FragmentHome.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.putExtra(FragmentHome.KEY_FINISH_AFTER_LAUNCH, finishHomeActivityAfterLaunch);
-            startActivity(i);
-
-            return true;
-        }
-
-        return false;
-    }*/
 
     public void showDebugHelper() {
 

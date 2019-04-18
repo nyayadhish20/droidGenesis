@@ -105,9 +105,7 @@ public class AppData {
         return loginPreferences.getString(KEYLANGUAGE,"");
     }
 
-    public void addDebugPDFInfo(String url) {
 
-    }
 
     public void saveToken(String token) {
         Log.i(TAG, "saveToken: Token = " + token);

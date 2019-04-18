@@ -20,8 +20,4 @@ public interface BaseView<T> {
 
     void onNoNetworkFoud();
 
-    //ShrecylerViewAdapter getListAdapter();
-
-    //SimpleIdlingResource getIdlingResource();
-    /*  void setPresenter(T Presenter);*/
 }
