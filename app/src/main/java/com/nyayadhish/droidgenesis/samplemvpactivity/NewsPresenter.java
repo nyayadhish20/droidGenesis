@@ -2,13 +2,10 @@ package com.nyayadhish.droidgenesis.samplemvpactivity;
 
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.nyayadhish.droidgenesis.lib.CustomHashMap;
-import com.nyayadhish.droidgenesis.lib.volley.CustomVolleyRequest;
+import com.nyayadhish.droidgenesis.lib.retrofit.CustomRetroCallbacks;
 import com.nyayadhish.droidgenesis.model.Resp;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import retrofit2.Call;
 
 /**
  * Created by Nikhil Nyayadhish on 25 Mar 2019 at 10:19.
@@ -17,6 +14,7 @@ public class NewsPresenter implements NewsContract.Presenter {
 
     private NewsContract.View mView;
     private static final String TAG = NewsPresenter.class.getSimpleName();
+    Call<Resp> mCall;
 
     public NewsPresenter(NewsContract.View mView) {
         this.mView = mView;
@@ -29,7 +27,8 @@ public class NewsPresenter implements NewsContract.Presenter {
 
     @Override
     public void onDestroy() {
-
+        Log.i("STOpping new api", "onDestroy: ");
+        mCall.cancel();
     }
 
     @Override
@@ -39,14 +38,15 @@ public class NewsPresenter implements NewsContract.Presenter {
 
     @Override
     public void onStop() {
-
+        Log.i("STOpping new api", "onStop: ");
+        mCall.cancel();
     }
 
     @Override
     public void callingPresenterFromView() {
-        // mView.onNewsFetched(response);
 
-        /*mView.getAPIComponent().getRetroService().getBaseUrl().getAllNews().enqueue(new CustomRetroCallbacks<Resp>() {
+       mCall =  mView.getAPIComponent().getRetroService().getBaseUrl().getAllNews("https://newsapi.org/v2/everything?q=bitcoin&from=2019-04-21&sortBy=publishedAt&apiKey=300e401e143940bc91c1d344186b36ea");
+        mCall.enqueue(new CustomRetroCallbacks<Resp>() {
             @Override
             protected void onSuccess(Resp response) {
                 mView.onNewsFetched(response);
@@ -57,11 +57,11 @@ public class NewsPresenter implements NewsContract.Presenter {
                 mView.faliure();
 
             }
-        });*/
+        });
 
 
-        CustomVolleyRequest mRequest = new CustomVolleyRequest(Request.Method.GET
-                , "https://newsapi.org/v2/everything?q=bitcoin&from=2019-02-26&sortBy=publishedAt&apiKey=300e401e143940bc91c1d344186b36ea"
+        /*CustomVolleyRequest mRequest = new CustomVolleyRequest(Request.Method.GET
+                , "https://newsapi.org/v2/everything?q=bitcoin&from=2019-04-21&sortBy=publishedAt&apiKey=300e401e143940bc91c1d344186b36ea"
                 , new CustomHashMap().new Builder().add("key","2").build()
                 , new CustomVolleyRequest.VolleyCallBack() {
             @Override
@@ -88,7 +88,7 @@ public class NewsPresenter implements NewsContract.Presenter {
             }
         });
         mView.getAPIComponent().getServerData().addToRequestQueue(mRequest,this);
-
+*/
 
 
     }

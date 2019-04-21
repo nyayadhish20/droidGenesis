@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".samplemvpactivity.ActivityNews">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,10 +24,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".samplemvpactivity.ActivityNews" />
+        <!--<activity android:name=".samplemvpactivity.ActivityNews" />-->
         <activity android:name=".transperentactivity.ActivityTransperent"
             android:theme="@style/Theme.Transparent"
             />
+        <activity android:name=".login.ActivityLogin"/>
     </application>
 
 </manifest>

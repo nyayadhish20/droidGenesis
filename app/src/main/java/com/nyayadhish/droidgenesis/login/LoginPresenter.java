@@ -1,7 +1,11 @@
 package com.nyayadhish.droidgenesis.login;
 
+import android.util.Log;
+
 import com.nyayadhish.droidgenesis.lib.retrofit.CustomRetroCallbacks;
 import com.nyayadhish.droidgenesis.model.Success;
+
+import retrofit2.Call;
 
 /**
  * Created by Nikhil Nyayadhish on 26 Mar 2019 at 11:52.
@@ -9,6 +13,7 @@ import com.nyayadhish.droidgenesis.model.Success;
 public class LoginPresenter implements LoginContract.Presenter {
 
     private LoginContract.View mView;
+    private Call<Success> mCall;
 
     public LoginPresenter(LoginContract.View mView) {
         this.mView = mView;
@@ -37,6 +42,22 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void login(String username, String password) {
         mView.showMaterialProgress("");
+        mCall = mView.getAPIComponent().getRetroService().getBaseUrl().login("");
+        mCall.enqueue(new CustomRetroCallbacks<Success>() {
+            @Override
+            protected void onSuccess(Success response) {
+
+            }
+
+            @Override
+            protected void onFailure(String generalErrorMsg, String systemErrorMsg) {
+
+            }
+        });
+
+
+
+
         mView.getAPIComponent().getRetroService().getBaseUrl().login("http://sale24by7.com/playballnet_staging/index.php/api/userLogin?email=shrinivas.magneto%40gmail.com&password=1234567&deviceId=e6vmm9DzlnM%3AAPA91bE0FdoEaoICasPDdJedBK8gZT_hVPdYC6Z3QjqLxs5JNpFUiGyafSo-xFPaQ6kS-Zn16ZuMaSwAm2H8b22xZWEpPkcl4heOTMYhxoZBds5YJs5IX1XJDvd5B7qVGgB61xw9sT-N&deviceType=2&userType=1&loginType=1&socialId=&username=")
                 .enqueue(new CustomRetroCallbacks<Success>() {
                     @Override

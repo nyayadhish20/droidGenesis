@@ -1,17 +1,20 @@
 package com.nyayadhish.droidgenesis.samplemvpactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.nyayadhish.droidgenesis.R;
 import com.nyayadhish.droidgenesis.lib.BaseActivityWithToolbar;
 import com.nyayadhish.droidgenesis.lib.BasePresenter;
+import com.nyayadhish.droidgenesis.login.ActivityLogin;
 import com.nyayadhish.droidgenesis.model.Resp;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Nikhil Nyayadhish on 25 Mar 2019 at 10:17.
@@ -24,6 +27,13 @@ public class ActivityNews extends BaseActivityWithToolbar implements NewsContrac
 
     @BindView(R.id.presenter)
     Button button;
+
+    @OnClick(R.id.presenter)
+    void onClickOnButton(){
+        Intent i = new Intent(this, ActivityLogin.class);
+        startActivity(i);
+        finish();
+    }
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerview;

@@ -29,6 +29,7 @@ public abstract class CustomRetroCallbacks<T> implements Callback<T> {
 
 
         if (response.isSuccessful() && response.body() != null) {
+            Log.i(TAG, "Response: " + response.body());
             onSuccess(response.body());
         } else
             onFailure(call, new Exception());
